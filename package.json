@@ -1,0 +1,24 @@
+{
+  "name": "code-step-by-step",
+  "version": "1.0.0",
+  "description": "nodejs-learning",
+  "homepage": "https://github.com/Rajeevkumar69/nodeJs-learning#readme",
+  "bugs": {
+    "url": "https://github.com/Rajeevkumar69/nodeJs-learning/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rajeevkumar69/nodeJs-learning.git"
+  },
+  "license": "ISC",
+  "author": "rajeev",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
