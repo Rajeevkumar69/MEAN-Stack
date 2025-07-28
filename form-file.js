@@ -28,8 +28,17 @@ http.createServer((req, res) => {
                 let dataString = `Username ${readableData.email} Password ${readableData.password}`;
                 console.log(dataString);
 
+                fs.writeFileSync("text/" + readableData.email+".txt",dataString);
+                console.log("File created");
 
-
+                // fs.writeFile('text/' + readableData.email + ".txt", dataString , 'utf-8' , (err)=>{
+                //     if(err){
+                //         res.end('Internal sever error');
+                //         return;
+                //     }else {
+                //         console.log('File Created');
+                //     }
+                // } )
                 res.end();
             });
         }
