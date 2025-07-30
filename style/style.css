@@ -102,7 +102,8 @@ header {
 }
 
 /* Footer */
-footer {
+footer,
+.footer {
     margin-top: auto;
     background: #22223b;
     text-align: center;
@@ -110,4 +111,159 @@ footer {
     font-size: 1rem;
     color: #a3a3a3;
     letter-spacing: 0.5px;
+}
+
+/* About Page Section */
+.about-section {
+    max-width: 700px;
+    margin: 4rem auto 0 auto;
+    background: rgba(34, 34, 59, 0.96);
+    border-radius: 14px;
+    padding: 2.6rem 2.1rem 2rem 2.1rem;
+    box-shadow: 0 4px 24px rgba(74, 78, 105, 0.22);
+    text-align: center;
+    animation: fadeInUp 0.7s ease;
+}
+
+.about-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.05rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.about-section p {
+    font-size: 1.13rem;
+    color: #f2e9e4;
+    margin-bottom: 0.8rem;
+}
+
+.about-section ul {
+    margin: 1.2rem auto 0 auto;
+    max-width: 410px;
+    list-style: disc inside;
+    text-align: left;
+    color: #c9ada7;
+    font-size: 1.06rem;
+}
+
+/* Services Page Section */
+.services-section {
+    max-width: 700px;
+    margin: 4rem auto 0 auto;
+    background: rgba(34, 34, 59, 0.96);
+    border-radius: 14px;
+    padding: 2.6rem 2.1rem 2rem 2.1rem;
+    box-shadow: 0 4px 24px rgba(74, 78, 105, 0.20);
+    text-align: center;
+    animation: fadeInUp 0.7s 50ms both;
+}
+
+.services-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.05rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.services-section p {
+    font-size: 1.13rem;
+    color: #f2e9e4;
+    margin-bottom: 0.8rem;
+}
+
+.services-section ul {
+    margin: 1.2rem auto 0 auto;
+    max-width: 410px;
+    list-style: circle inside;
+    text-align: left;
+    color: #c9ada7;
+    font-size: 1.05rem;
+}
+
+/* Contact Page Section */
+.contact-section {
+    max-width: 700px;
+    margin: 4rem auto 0 auto;
+    background: rgba(34, 34, 59, 0.97);
+    border-radius: 14px;
+    padding: 2.6rem 2.1rem 2rem 2.1rem;
+    box-shadow: 0 4px 24px rgba(74, 78, 105, 0.22);
+    text-align: center;
+    animation: fadeInUp 0.7s 90ms both;
+}
+
+.contact-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.1rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.contact-section form {
+    max-width: 380px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-section label {
+    display: block;
+    margin-bottom: 0.15em;
+    color: #c9ada7;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.contact-section input[type="text"],
+.contact-section input[type="email"],
+.contact-section textarea {
+    width: 100%;
+    background: #4a4e69;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    padding: 0.66rem 0.8rem;
+    font-size: 1rem;
+    margin: 0.25rem 0 1.2rem 0;
+    transition: background 0.2s;
+    resize: vertical;
+}
+
+.contact-section input[type="text"]:focus,
+.contact-section input[type="email"]:focus,
+.contact-section textarea:focus {
+    background: #22223b;
+    outline: none;
+}
+
+.contact-section input[type="submit"] {
+    width: 100%;
+    padding: 0.7rem 0;
+    background: #c9ada7;
+    color: #22223b;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    margin-top: 0.15em;
+}
+
+.contact-section input[type="submit"]:hover {
+    background: #9a8c98;
+    color: #fff;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
 }
