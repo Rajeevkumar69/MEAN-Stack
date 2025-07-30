@@ -19,6 +19,7 @@ http.createServer((req, res) => {
     //     // res.end(headerData);
     // });
 
+    // Node routing
     let file = '/home';
     if (req.url !== '/' && req.url !== '/style/style.css') {
         file = req.url;
