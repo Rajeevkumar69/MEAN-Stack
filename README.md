@@ -17,3 +17,6 @@ Learn modular and layered code structuring for production-ready applications
 Understand secure authentication, database integration, and request lifecycle in-depth
 
 Ideal for both learners and professionals aiming to level up their backend engineering skills.
+
+<!-- "type": "module", if you need to run express file  -->
+<!-- "type": "commonjs", if you need to run NodeJs file  -->

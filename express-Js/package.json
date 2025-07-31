@@ -1,7 +1,7 @@
 {
-  "name": "code-step-by-step",
+  "name": "express-js",
   "version": "1.0.0",
-  "description": "nodejs-learning",
+  "description": "express-js learning",
   "homepage": "https://github.com/Rajeevkumar69/nodeJs-learning#readme",
   "bugs": {
     "url": "https://github.com/Rajeevkumar69/nodeJs-learning/issues"
@@ -12,14 +12,12 @@
   },
   "license": "ISC",
   "author": "rajeev",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "colors": "^1.4.0",
-    "nodemon": "^3.1.10"
+    "express": "^5.1.0"
   }
 }
