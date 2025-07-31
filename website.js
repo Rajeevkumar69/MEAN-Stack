@@ -39,7 +39,7 @@ http.createServer((req, res) => {
             res.write(collectHeaderData + "" + data + "" + collectedFooterData)
             res.end();
         });
-    } else if (req.url == '/style/style.css') {
+    } else if (req.url === '/style/style.css') {
         fs.readFile('style/style.css', 'utf-8', (err, data) => {
             if (err) {
                 res.writeHead(500, { "content-type": 'text/plain' });
@@ -53,6 +53,5 @@ http.createServer((req, res) => {
         res.writeHead(404, { "content-type": 'text/plain' });
         res.end('404 Not Found');
     }
-
 
 }).listen(arg[2]);
