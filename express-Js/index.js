@@ -1,3 +1,4 @@
+// Render HTML code from another path
 // import express from 'express';
 // import home from './pages/home.js';
 // import about, { contact } from './pages/about.js';
@@ -21,27 +22,31 @@
 //     console.log("Server is running on http://localhost:4800");
 // });
 
+// Render HTML file from another path
 
 import express from 'express';
 import path from 'path';
 const arg = process.argv;
 
 const app = express();
+const viewsPath = path.resolve('views');
+const stylePath = path.resolve('style');
 
-const filePath = path.resolve('views');
+app.use(express.static(stylePath));
+
 
 app.get('/', (req, res) => {
-  res.sendFile(filePath + '/home.html');
+  res.sendFile(viewsPath + '/home.html');
 });
 
 app.get('/dashboard', (req, res) => {
-  res.sendFile(filePath + '/dashboard.html');
+  res.sendFile(viewsPath + '/dashboard.html');
 });
 
 // load 404 page
 
 app.use((req, res) => {
-  res.sendFile(filePath + '/error-page.html');
+  res.sendFile(viewsPath + '/error-page.html');
 });
 
 

@@ -2,25 +2,25 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", "Segoe UI", sans-serif;
 }
 
 body {
-    background: linear-gradient(to right, #f0f4ff, #e6f7ff);
+    background: #f0f4ff;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Home / Login */
 .page {
     width: 100%;
     max-width: 400px;
     padding: 20px;
 }
 
-.login-box,
-.dashboard-box {
+.login-box {
     background: #ffffff;
     border-radius: 20px;
     padding: 40px 30px;
@@ -51,8 +51,8 @@ input {
 }
 
 input:focus {
-    border-color: #3b82f6;
     outline: none;
+    border-color: #3b82f6;
 }
 
 button {
@@ -63,7 +63,7 @@ button {
     border: none;
     border-radius: 12px;
     font-size: 16px;
-    transition: background 0.3s;
+    transition: 0.3s;
     cursor: pointer;
 }
 
@@ -71,19 +71,25 @@ button:hover {
     background: #2563eb;
 }
 
-.dashboard-link,
-.back-home {
+.dashboard-link {
     display: inline-block;
     margin-top: 20px;
     color: #334155;
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.3s;
 }
 
-.dashboard-link:hover,
-.back-home:hover {
+.dashboard-link:hover {
     color: #1d4ed8;
+}
+
+/* Dashboard */
+.dashboard-box {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
 }
 
 .dashboard-box h2 {
@@ -96,4 +102,56 @@ button:hover {
     color: #475569;
     font-size: 15px;
     margin-bottom: 20px;
+}
+
+.back-home {
+    text-decoration: none;
+    color: #3b82f6;
+    font-size: 14px;
+}
+
+.back-home:hover {
+    color: #1d4ed8;
+}
+
+/* 404 */
+.wrapper {
+    text-align: center;
+    max-width: 400px;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.wrapper h1 {
+    font-size: 32px;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.wrapper p {
+    font-size: 15px;
+    color: #475569;
+    margin-bottom: 25px;
+}
+
+.wrapper a {
+    display: inline-block;
+    text-decoration: none;
+    background: #10b981;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.wrapper a:hover {
+    background: #059669;
 }
