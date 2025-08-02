@@ -28,14 +28,21 @@ const arg = process.argv;
 
 const app = express();
 
+const filePath = path.resolve('views');
+
 app.get('/', (req, res) => {
-  const absPath = path.resolve('views/home.html');
-  res.sendFile(absPath);
+  res.sendFile(filePath + '/home.html');
 });
 
 app.get('/dashboard', (req, res) => {
-  const absPath = path.resolve('views/dashboard.html');
-  res.sendFile(absPath);
+  res.sendFile(filePath + '/dashboard.html');
 });
+
+// load 404 page
+
+app.use((req, res) => {
+  res.sendFile(filePath + '/error-page.html');
+});
+
 
 app.listen(arg[2]);
