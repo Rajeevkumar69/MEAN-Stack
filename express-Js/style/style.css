@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #f0f4ff, #e6f7ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-box,
+.dashboard-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.brand h2 {
+    font-size: 26px;
+    color: #1d4ed8;
+    margin-bottom: 8px;
+}
+
+.brand p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #3b82f6;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+.dashboard-link,
+.back-home {
+    display: inline-block;
+    margin-top: 20px;
+    color: #334155;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.dashboard-link:hover,
+.back-home:hover {
+    color: #1d4ed8;
+}
+
+.dashboard-box h2 {
+    font-size: 24px;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.dashboard-box p {
+    color: #475569;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
