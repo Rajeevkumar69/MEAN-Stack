@@ -54,30 +54,60 @@
 
 // Middleware details with Node & ExpressJs
 
+// import express from "express";
+// import path from 'path';
+// const arg = process.argv;
+
+// const app = express();
+
+
+// app.use((req, res, next)=>{
+//  console.log(req.url);
+//     next();
+// });
+
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// });
+
+// app.get('/home', (req, res) => {
+//     res.send('Home World!');
+// });
+
+// app.get('/dashboard', (req, res) => {
+//     res.send('Dashboard World!');
+// });
+
+
+
+// app.listen(arg[2]);
+
+// Route Middleware with Code Examples
+
 import express from "express";
-import path from 'path';
 const arg = process.argv;
 
 const app = express();
 
+function checkAgeRouteMiddleware(req, res, next) {
+    if(!req.query.age || req.query.age < 18 ){
+        res.send(`<p>You can't access this application</p>`);
+    }
+    else{
+        next();
+    }
+}
 
-app.use((req, res, next)=>{
- console.log(req.url);
-    next();
-});
+app.get('', (req, res)=>{
+    res.send(`<h1>Home Page</h1>`);
+} );
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.get('/login',  (req, res)=>{
+    res.send(`<h1>Login Page</h1>`);
+} );
 
-app.get('/home', (req, res) => {
-    res.send('Home World!');
-});
-
-app.get('/dashboard', (req, res) => {
-    res.send('Dashboard World!');
-});
-
-
+app.get('/dashboard', checkAgeRouteMiddleware, (req, res)=>{
+    res.send(`<h1>Dashboard Page</h1>`);
+} );
 
 app.listen(arg[2]);
