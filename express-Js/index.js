@@ -114,40 +114,62 @@
 
 // Built-In Middleware with Code Examples
 
+// import express from "express";
+// import path from 'path';
+// const arg = process.argv;
+
+// const app = express();
+
+// app.use(express.urlencoded({extended:false})); // builtin middleware
+// const viewsPath = path.resolve('views');
+// const stylePath = path.resolve('style');
+
+// app.use(express.static(stylePath));
+
+// app.get('', (req, res) => {
+//     res.send(`<h1>Home Page</h1>`);
+// });
+
+
+// app.get('/login', (req, res) => {
+//     res.send(`
+//         <form action="/dashboard" method="post" >
+//             <input placeholder="Enter name" type="text" name="name" />
+//             <br/>
+//             <br />
+//             <input placeholder="Enter password" type="password" name="password" />
+//              <br/>
+//             <br />
+//             <button> Submit </button>
+//         </form>
+//         `);
+// });
+
+// app.post('/dashboard', (req, res) => {
+//   res.sendFile(viewsPath + '/dashboard.html');
+// });
+
+
+// app.listen(arg[2]);
+
+// 34 External Middleware in Express.js 
+
 import express from "express";
 import path from 'path';
+import morgan from "morgan";
 const arg = process.argv;
 
 const app = express();
 
-app.use(express.urlencoded({extended:false})); // builtin middleware
-const viewsPath = path.resolve('views');
-const stylePath = path.resolve('style');
 
-app.use(express.static(stylePath));
+app.use(morgan('dev'));
 
-app.get('', (req, res) => {
-    res.send(`<h1>Home Page</h1>`);
+app.get("/", (req, res) => {
+    res.send(`<p>Hello world!</p>`)
 });
 
-
-app.get('/login', (req, res) => {
-    res.send(`
-        <form action="/dashboard" method="post" >
-            <input placeholder="Enter name" type="text" name="name" />
-            <br/>
-            <br />
-            <input placeholder="Enter password" type="password" name="password" />
-             <br/>
-            <br />
-            <button> Submit </button>
-        </form>
-        `);
+app.get("/dashboard", (req, res) => {
+    res.send(`<p>Welcome budy</p>`)
 });
-
-app.post('/dashboard', (req, res) => {
-  res.sendFile(viewsPath + '/dashboard.html');
-});
-
 
 app.listen(arg[2]);
