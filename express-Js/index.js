@@ -154,22 +154,52 @@
 
 // 34 External Middleware in Express.js 
 
+// import express from "express";
+// import path from 'path';
+// import morgan from "morgan";
+// const arg = process.argv;
+
+// const app = express();
+
+
+// app.use(morgan('dev'));
+
+// app.get("/", (req, res) => {
+//     res.send(`<p>Hello world!</p>`)
+// });
+
+// app.get("/dashboard", (req, res) => {
+//     res.send(`<p>Welcome budy</p>`)
+// });
+
+// app.listen(arg[2]);
+
+// 35 Error Handling Middleware in Express.js
+
 import express from "express";
-import path from 'path';
-import morgan from "morgan";
+import path from "path";
 const arg = process.argv;
 
 const app = express();
 
-
-app.use(morgan('dev'));
-
 app.get("/", (req, res) => {
-    res.send(`<p>Hello world!</p>`)
+    res.send(`<h1>Home Page</h1>`);
 });
 
 app.get("/dashboard", (req, res) => {
-    res.send(`<p>Welcome budy</p>`)
+    res.send(`<h1>Dashboard Page</h1>`);
 });
+
+app.use((req, res, next) => {
+  const error = new Error("Page Not Found");
+  error.status = 404;
+  next(error);
+});
+
+function handleErrorPage(error, req, res, next) {
+    res.status(error.status || 500).send('Something went wrong or try later');
+}
+
+app.use(handleErrorPage);
 
 app.listen(arg[2]);
