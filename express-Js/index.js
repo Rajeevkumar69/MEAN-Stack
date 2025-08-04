@@ -176,30 +176,50 @@
 
 // 35 Error Handling Middleware in Express.js
 
+// import express from "express";
+// import path from "path";
+// const arg = process.argv;
+
+// const app = express();
+
+// app.get("/", (req, res) => {
+//     res.send(`<h1>Home Page</h1>`);
+// });
+
+// app.get("/dashboard", (req, res) => {
+//     res.send(`<h1>Dashboard Page</h1>`);
+// });
+
+// app.use((req, res, next) => {
+//   const error = new Error("Page Not Found");
+//   error.status = 404;
+//   next(error);
+// });
+
+// function handleErrorPage(error, req, res, next) {
+//     res.status(error.status || 500).send('Something went wrong or try later');
+// }
+
+// app.use(handleErrorPage);
+
+// app.listen(arg[2]);
+
+// 36 EJS | Template engine in express JS
+
 import express from "express";
-import path from "path";
+import  path from 'path'
 const arg = process.argv;
 
 const app = express();
 
-app.get("/", (req, res) => {
-    res.send(`<h1>Home Page</h1>`);
-});
 
-app.get("/dashboard", (req, res) => {
-    res.send(`<h1>Dashboard Page</h1>`);
-});
+app.set('view engine', 'ejs' );
+app.get("/", (req, res)=>{
+    res.render('home', { name: 'Rajeev Kumar', course: 'NodeJs' });
+} );
 
-app.use((req, res, next) => {
-  const error = new Error("Page Not Found");
-  error.status = 404;
-  next(error);
-});
-
-function handleErrorPage(error, req, res, next) {
-    res.status(error.status || 500).send('Something went wrong or try later');
-}
-
-app.use(handleErrorPage);
+app.get("/dashboard", (req, res)=>{
+    res.send(`<h1>Dashboard Page</h1>`)
+} );
 
 app.listen(arg[2]);
