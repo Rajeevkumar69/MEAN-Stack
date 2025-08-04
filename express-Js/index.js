@@ -84,30 +84,70 @@
 
 // Route Middleware with Code Examples
 
+// import express from "express";
+// const arg = process.argv;
+
+// const app = express();
+
+// function checkAgeRouteMiddleware(req, res, next) {
+//     if(!req.query.age || req.query.age < 18 ){
+//         res.send(`<p>You can't access this application</p>`);
+//     }
+//     else{
+//         next();
+//     }
+// }
+
+// app.get('', (req, res)=>{
+//     res.send(`<h1>Home Page</h1>`);
+// } );
+
+// app.get('/login',  (req, res)=>{
+//     res.send(`<h1>Login Page</h1>`);
+// } );
+
+// app.get('/dashboard', checkAgeRouteMiddleware, (req, res)=>{
+//     res.send(`<h1>Dashboard Page</h1>`);
+// } );
+
+// app.listen(arg[2]);
+
+// Built-In Middleware with Code Examples
+
 import express from "express";
+import path from 'path';
 const arg = process.argv;
 
 const app = express();
 
-function checkAgeRouteMiddleware(req, res, next) {
-    if(!req.query.age || req.query.age < 18 ){
-        res.send(`<p>You can't access this application</p>`);
-    }
-    else{
-        next();
-    }
-}
+app.use(express.urlencoded({extended:false})); // builtin middleware
+const viewsPath = path.resolve('views');
+const stylePath = path.resolve('style');
 
-app.get('', (req, res)=>{
+app.use(express.static(stylePath));
+
+app.get('', (req, res) => {
     res.send(`<h1>Home Page</h1>`);
-} );
+});
 
-app.get('/login',  (req, res)=>{
-    res.send(`<h1>Login Page</h1>`);
-} );
 
-app.get('/dashboard', checkAgeRouteMiddleware, (req, res)=>{
-    res.send(`<h1>Dashboard Page</h1>`);
-} );
+app.get('/login', (req, res) => {
+    res.send(`
+        <form action="/dashboard" method="post" >
+            <input placeholder="Enter name" type="text" name="name" />
+            <br/>
+            <br />
+            <input placeholder="Enter password" type="password" name="password" />
+             <br/>
+            <br />
+            <button> Submit </button>
+        </form>
+        `);
+});
+
+app.post('/dashboard', (req, res) => {
+  res.sendFile(viewsPath + '/dashboard.html');
+});
+
 
 app.listen(arg[2]);
