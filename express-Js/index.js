@@ -206,20 +206,44 @@
 
 // 36 EJS | Template engine in express JS
 
+// import express from "express";
+// import  path from 'path'
+// const arg = process.argv;
+
+// const app = express();
+
+
+// app.set('view engine', 'ejs' );
+// app.get("/", (req, res)=>{
+//     res.render('home', { name: 'Rajeev Kumar', course: 'NodeJs' });
+// } );
+
+// app.get("/dashboard", (req, res)=>{
+//     res.send(`<h1>Dashboard Page</h1>`)
+// } );
+
+// app.listen(arg[2]);
+
+
+// 37 submit form data and display on ejs template engine page
+
 import express from "express";
-import  path from 'path'
+import path from 'path';
 const arg = process.argv;
 
 const app = express();
 
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
 
-app.set('view engine', 'ejs' );
-app.get("/", (req, res)=>{
-    res.render('home', { name: 'Rajeev Kumar', course: 'NodeJs' });
-} );
 
-app.get("/dashboard", (req, res)=>{
-    res.send(`<h1>Dashboard Page</h1>`)
-} );
+app.get("/", (req, res) => {
+    res.render('add-user');
+});
+
+
+app.post("/submit-user", (req, res) => {
+    res.render('submit-user');
+});
 
 app.listen(arg[2]);
