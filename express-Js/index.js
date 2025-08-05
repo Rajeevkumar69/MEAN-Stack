@@ -262,10 +262,6 @@ app.get("", (req, res) => {
     res.render('add-user');
 });
 
-// app.post("/submit-user", (req, res)=>{
-//     res.render('submit-user');
-// } );
-
 app.get("/users", (req, res) => {
     const users = [
         { name: " Brown", email: "alice@example.com" },
