@@ -322,8 +322,9 @@ app.get("", (req, res) => {
     const users = ['anil', 'rajeev', 'harsh'];
     let data = '';
     for (let i = 0; i < users.length; i++) {
-        data += `<li> <a href='user/${users[i]}' >${users[i]}</a> </li>`
-        console.log(users[i]);
+        let name = users[i];
+        let capitalized = name.charAt(0).toUpperCase() + name.slice(1);
+        data += `<li> <a href='user/${users[i]}' >${capitalized}</a> </li>`
 
     }
     res.send(data)
@@ -331,9 +332,10 @@ app.get("", (req, res) => {
 
 
 app.get("/user/:name", (req, res) => {
-    console.log(req.params.name);
-    
-    res.send(`<p>This is ${req.params.name} profile page</p>`)
+    const name = req.params.name;
+    const capitalized = name.charAt(0).toUpperCase() + name.slice(1);
+    res.send(`<p>This is ${capitalized} profile page</p>`);
+
 })
 
 app.listen(arg[2]);
