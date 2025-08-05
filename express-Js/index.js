@@ -1,4 +1,18 @@
+// Plain express module
+
+// import express from 'express';
+// const app = express();
+
+
+// app.get("", (req, res) => {
+//     res.send("<h1>Welcome to ExpressJs learning</h1>");
+// });
+
+// app.listen(4800);
+
+
 // Render HTML code from another path
+
 // import express from 'express';
 // import home from './pages/home.js';
 // import about, { contact } from './pages/about.js';
@@ -250,28 +264,28 @@
 
 // 38 Loops and Conditions in EJS Template Files
 
-import express from "express";
-const arg = process.argv;
+// import express from "express";
+// const arg = process.argv;
 
-const app = express();
+// const app = express();
 
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: false }));
+// app.set('view engine', 'ejs');
+// app.use(express.urlencoded({ extended: false }));
 
-app.get("", (req, res) => {
-    res.render('add-user');
-});
+// app.get("", (req, res) => {
+//     res.render('add-user');
+// });
 
-app.get("/users", (req, res) => {
-    const users = [
-        { name: " Brown", email: "alice@example.com" },
-        { name: "Alice ", email: "alice@example.com" },
-        { name: "Alice Brown", email: "alice@example.com" },
-        { name: "John Doe", email: "john@example.com" },
-        { name: "Jane Smith", email: "jane@example.com" },
-        { name: "Alice Brown", email: "alice@example.com" }
-    ];
-    res.render('users', {users:users} );
-});
+// app.get("/users", (req, res) => {
+//     const users = [
+//         { name: " Brown", email: "alice@example.com" },
+//         { name: "Alice ", email: "alice@example.com" },
+//         { name: "Alice Brown", email: "alice@example.com" },
+//         { name: "John Doe", email: "john@example.com" },
+//         { name: "Jane Smith", email: "jane@example.com" },
+//         { name: "Alice Brown", email: "alice@example.com" }
+//     ];
+//     res.render('users', {users:users} );
+// });
 
-app.listen(arg[2]);
+// app.listen(arg[2]);
