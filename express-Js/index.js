@@ -227,8 +227,30 @@
 
 // 37 submit form data and display on ejs template engine page
 
+// import express from "express";
+// import path from 'path';
+// const arg = process.argv;
+
+// const app = express();
+
+// app.set('view engine', 'ejs');
+// app.use(express.urlencoded({ extended: false }));
+
+
+// app.get("/", (req, res) => {
+//     res.render('add-user');
+// });
+
+
+// app.post("/submit-user", (req, res) => {
+//     res.render('submit-user');
+// });
+
+// app.listen(arg[2]);
+
+// 38 Loops and Conditions in EJS Template Files
+
 import express from "express";
-import path from 'path';
 const arg = process.argv;
 
 const app = express();
@@ -236,14 +258,24 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
-
-app.get("/", (req, res) => {
+app.get("", (req, res) => {
     res.render('add-user');
 });
 
+// app.post("/submit-user", (req, res)=>{
+//     res.render('submit-user');
+// } );
 
-app.post("/submit-user", (req, res) => {
-    res.render('submit-user');
+app.get("/users", (req, res) => {
+    const users = [
+        { name: " Brown", email: "alice@example.com" },
+        { name: "Alice ", email: "alice@example.com" },
+        { name: "Alice Brown", email: "alice@example.com" },
+        { name: "John Doe", email: "john@example.com" },
+        { name: "Jane Smith", email: "jane@example.com" },
+        { name: "Alice Brown", email: "alice@example.com" }
+    ];
+    res.render('users', {users:users} );
 });
 
 app.listen(arg[2]);

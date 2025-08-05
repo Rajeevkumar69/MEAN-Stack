@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Users List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2b6cb0;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .username {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .email {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Users List</h2>
+        <ul>
+            <% users.forEach(user=> { %>
+                <li>
+                    <div>
+                        <div class="username">
+                            <%= user.name %>
+                        </div>
+                        <div class="email">
+                            <%= user.email %>
+                        </div>
+                    </div>
+                </li>
+                <% }) %>
+        </ul>
+
+        <a href="/">Add New User</a>
+    </div>
+
+</body>
+
+</html>
