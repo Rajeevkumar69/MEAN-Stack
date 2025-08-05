@@ -289,3 +289,22 @@
 // });
 
 // app.listen(arg[2]);
+
+
+// 39 MVC Architecture Example with Node.js
+
+import eexpress from "express";
+const arg = process.argv;
+import {handleUsersController} from './controller/user-controller.js';
+
+const app = eexpress();
+
+
+app.set('view engine', 'ejs');
+app.use(eexpress.urlencoded({extended:false}));
+
+
+app.get("", handleUsersController );
+
+
+app.listen(arg[2]);
