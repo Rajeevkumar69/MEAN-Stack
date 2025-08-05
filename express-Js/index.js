@@ -293,18 +293,47 @@
 
 // 39 MVC Architecture Example with Node.js
 
-import eexpress from "express";
+// import eexpress from "express";
+// const arg = process.argv;
+// import {handleUsersController} from './controller/user-controller.js';
+
+// const app = eexpress();
+
+
+// app.set('view engine', 'ejs');
+// app.use(eexpress.urlencoded({extended:false}));
+
+
+// app.get("", handleUsersController );
+
+
+// app.listen(arg[2]);
+
+
+// 40 Dynamic Routes with Example
+
+
+import express from "express";
 const arg = process.argv;
-import {handleUsersController} from './controller/user-controller.js';
 
-const app = eexpress();
+const app = express();
+
+app.get("", (req, res) => {
+    const users = ['anil', 'rajeev', 'harsh'];
+    let data = '';
+    for (let i = 0; i < users.length; i++) {
+        data += `<li> <a href='user/${users[i]}' >${users[i]}</a> </li>`
+        console.log(users[i]);
+
+    }
+    res.send(data)
+});
 
 
-app.set('view engine', 'ejs');
-app.use(eexpress.urlencoded({extended:false}));
-
-
-app.get("", handleUsersController );
-
+app.get("/user/:name", (req, res) => {
+    console.log(req.params.name);
+    
+    res.send(`<p>This is ${req.params.name} profile page</p>`)
+})
 
 app.listen(arg[2]);
