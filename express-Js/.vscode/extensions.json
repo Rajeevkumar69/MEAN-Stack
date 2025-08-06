@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "expresssnippets.vscode-express-snippets"
+        "expresssnippets.vscode-express-snippets",
+        "rangav.vscode-thunder-client"
     ]
 }

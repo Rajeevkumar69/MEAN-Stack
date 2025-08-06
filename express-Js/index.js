@@ -313,29 +313,57 @@
 // 40 Dynamic Routes with Example
 
 
+// import express from "express";
+// const arg = process.argv;
+
+// const app = express();
+
+// app.get("", (req, res) => {
+//     const users = ['anil', 'rajeev', 'harsh'];
+//     let data = '';
+//     for (let i = 0; i < users.length; i++) {
+//         let name = users[i];
+//         let capitalized = name.charAt(0).toUpperCase() + name.slice(1);
+//         data += `<li> <a href='user/${users[i]}' >${capitalized}</a> </li>`
+
+//     }
+//     res.send(data)
+// });
+
+
+// app.get("/user/:name", (req, res) => {
+//     const name = req.params.name;
+//     const capitalized = name.charAt(0).toUpperCase() + name.slice(1);
+//     res.send(`<p>This is ${capitalized} profile page</p>`);
+
+// })
+
+// app.listen(arg[2]);
+
+// 41 API Example with Dynamic Routes
+
 import express from "express";
+import path from 'path';
+import userData from './constant/users.json' with {type: 'json'}
 const arg = process.argv;
+
 
 const app = express();
 
 app.get("", (req, res) => {
-    const users = ['anil', 'rajeev', 'harsh'];
-    let data = '';
-    for (let i = 0; i < users.length; i++) {
-        let name = users[i];
-        let capitalized = name.charAt(0).toUpperCase() + name.slice(1);
-        data += `<li> <a href='user/${users[i]}' >${capitalized}</a> </li>`
-
-    }
-    res.send(data)
+    res.send(userData)
 });
 
+app.get("/user/:id", (req, res) => {
+    const id = req.params.id;
+    let filteredData = userData.filter((user) => user.id == id);
+    res.send(filteredData);
+})
 
-app.get("/user/:name", (req, res) => {
+app.get("/username/:name", (req, res) => {
     const name = req.params.name;
-    const capitalized = name.charAt(0).toUpperCase() + name.slice(1);
-    res.send(`<p>This is ${capitalized} profile page</p>`);
-
+    let filteredData = userData.filter((user) => user.name.toLowerCase().trim() == name.toLowerCase().trim());
+    res.send(filteredData);
 })
 
 app.listen(arg[2]);
