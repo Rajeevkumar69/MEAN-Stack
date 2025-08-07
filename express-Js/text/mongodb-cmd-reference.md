@@ -1,7 +1,3 @@
-Here’s your **MongoDB CMD Reference Documentation** in clean, professional format with proper descriptions and copyable commands using backticks \`\`. You can use this as a `.txt` file or upload it directly to GitHub as `mongodb-cmd-reference.txt`.
-
----
-
 ## 🗂️ MongoDB CMD Reference (Windows)
 
 ### ✅ Start MongoDB Server (as Administrator)
@@ -123,8 +119,6 @@ net stop MongoDB
 
 * Always run `net start MongoDB` and `net stop MongoDB` in **Admin CMD**
 * Use `mongod` only if you’re running MongoDB in standalone mode (non-service)
-* Shell commands work **inside `mongosh` prompt**, not in CMD
 
 ---
 
-Let me know if you want it exported as `.txt` or `.md` for GitHub upload.
