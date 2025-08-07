@@ -342,27 +342,27 @@
 
 // 41 API Example with Dynamic Routes
 
-import express from "express";
-import userData from './constant/users.json' with {type: 'json'}
-const arg = process.argv;
+// import express from "express";
+// import userData from './constant/users.json' with {type: 'json'}
+// const arg = process.argv;
 
 
-const app = express();
+// const app = express();
 
-app.get("", (req, res) => {
-    res.send(userData)
-});
+// app.get("", (req, res) => {
+//     res.send(userData)
+// });
 
-app.get("/user/:id", (req, res) => {
-    const id = req.params.id;
-    let filteredData = userData.filter((user) => user.id == id);
-    res.send(filteredData);
-})
+// app.get("/user/:id", (req, res) => {
+//     const id = req.params.id;
+//     let filteredData = userData.filter((user) => user.id == id);
+//     res.send(filteredData);
+// })
 
-app.get("/username/:name", (req, res) => {
-    const name = req.params.name;
-    let filteredData = userData.filter((user) => user.name.toLowerCase().trim() == name.toLowerCase().trim());
-    res.send(filteredData);
-})
+// app.get("/username/:name", (req, res) => {
+//     const name = req.params.name;
+//     let filteredData = userData.filter((user) => user.name.toLowerCase().trim() == name.toLowerCase().trim());
+//     res.send(filteredData);
+// })
 
-app.listen(arg[2]);
+// app.listen(arg[2]);
