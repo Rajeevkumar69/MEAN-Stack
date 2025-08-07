@@ -343,7 +343,6 @@
 // 41 API Example with Dynamic Routes
 
 import express from "express";
-import path from 'path';
 import userData from './constant/users.json' with {type: 'json'}
 const arg = process.argv;
 
