@@ -399,29 +399,68 @@
 
 // 46 Display MongoDB Data on UI using Node.js
 
+// import express from "express";
+// import { MongoClient } from "mongodb";
+
+// const dbName = "school";
+// const url = "mongodb://localhost:27017"
+
+// const client = new MongoClient(url);
+// const app = express();
+// app.set("view engine", "ejs");
+
+
+// app.get("/", async (req, res) => {
+
+//     await client.connect()
+//     const db = client.db(dbName);
+//     const collection = db.collection('students');
+
+//     const result = await collection.find().toArray();
+//     // console.log(result);
+
+//     res.render('table-data', { studentsData: result });
+// });
+
+
+
+// app.listen(4800);
+
+
+// ------------------------------------------
+// 47 REST API with Node.js & MongoDB
+
 import express from "express";
 import { MongoClient } from "mongodb";
 
-const dbName = "school";
+const dbName = 'school';
 const url = "mongodb://localhost:27017"
 
 const client = new MongoClient(url);
 const app = express();
-app.set("view engine", "ejs");
 
+app.set('view engine', 'ejs');
 
-app.get("/", async (req, res) => {
+client.connect().then((connection) => {
+    connection.db(dbName);
 
-    await client.connect()
-    const db = client.db(dbName);
-    const collection = db.collection('students');
+    app.get("/api", async(req, res) => {
+        const db = client.db(dbName);
+        const collection =  db.collection('students');
+        const result = await collection.find().toArray();
 
-    const result = await collection.find().toArray();
-    // console.log(result);
+        res.send(result);
+    });
 
-    res.render('table-data', { studentsData: result });
+    app.get("/app", async(req, res) => {
+        const db = client.db(dbName);
+        const collection =  db.collection('students');
+        const result = await collection.find().toArray();
+
+        res.render('table-data' , {studentsData:result});
+    })
+
 });
 
-
-
 app.listen(4800);
+
