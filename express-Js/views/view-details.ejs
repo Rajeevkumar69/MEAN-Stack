@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Student Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            background: #fff;
+            margin: 40px auto;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .detail-value {
+            color: #333;
+            text-align: right;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .btn {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Student Details</h2>
+
+        <div class="detail-row">
+            <div class="detail-label">Full Name:</div>
+            <div class="detail-value">
+                <%= studentDetails.name %>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="detail-label">Date of Birth:</div>
+            <div class="detail-value">
+                <%= studentDetails.dob %>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="detail-label">Gender:</div>
+            <div class="detail-value">
+                <%= studentDetails.gender %>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="detail-label">Email:</div>
+            <div class="detail-value">
+                <%= studentDetails.email %>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="detail-label">Phone Number:</div>
+            <div class="detail-value">
+                <%= studentDetails.phone %>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="detail-label">Course:</div>
+            <div class="detail-value">
+                <%= studentDetails.course %>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="/dashboard" class="btn">Confirm</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

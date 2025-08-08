@@ -430,37 +430,87 @@
 // ------------------------------------------
 // 47 REST API with Node.js & MongoDB
 
+// import express from "express";
+// import { MongoClient } from "mongodb";
+
+// const dbName = 'school';
+// const url = "mongodb://localhost:27017"
+
+// const client = new MongoClient(url);
+// const app = express();
+
+// app.set('view engine', 'ejs');
+
+// client.connect().then((connection) => {
+//     connection.db(dbName);
+
+//     app.get("/api", async(req, res) => {
+//         const db = client.db(dbName);
+//         const collection =  db.collection('students');
+//         const result = await collection.find().toArray();
+
+//         res.send(result);
+//     });
+
+//     app.get("/app", async(req, res) => {
+//         const db = client.db(dbName);
+//         const collection =  db.collection('students');
+//         const result = await collection.find().toArray();
+
+//         res.render('table-data' , {studentsData:result});
+//     })
+
+// });
+
+// app.listen(4800);
+
+
+// ------------------------------------------
+// 48 | REST API with Node.js & MongoDB | Save Form Data in MongoDB
+
 import express from "express";
 import { MongoClient } from "mongodb";
 
 const dbName = 'school';
-const url = "mongodb://localhost:27017"
+const url = 'mongodb://localhost:27017/';
 
 const client = new MongoClient(url);
 const app = express();
-
+app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 client.connect().then((connection) => {
     connection.db(dbName);
+    let db = client.db(dbName);
 
-    app.get("/api", async(req, res) => {
-        const db = client.db(dbName);
-        const collection =  db.collection('students');
+    app.get('/', async (req, res) => {
+        const collection = db.collection('students');
         const result = await collection.find().toArray();
 
         res.send(result);
     });
 
-    app.get("/app", async(req, res) => {
-        const db = client.db(dbName);
-        const collection =  db.collection('students');
+    app.get("/dashboard", async (req, res) => {
+        const collection = db.collection('students');
         const result = await collection.find().toArray();
 
-        res.render('table-data' , {studentsData:result});
-    })
+        res.render('table-data', { studentsData: result });
+    });
 
-});
+    app.get('/student-form', async (req, res) => {
+        res.render('add-students');
+    });
+
+    app.post("/view", async (req, res) => {
+        let userData = req.body;
+
+        const collection = db.collection('students');
+        const result =  await collection.insertOne(userData);
+        res.render('view-details', {studentDetails:userData});
+    });
+
+})
 
 app.listen(4800);
+
 

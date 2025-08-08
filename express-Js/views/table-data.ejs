@@ -45,22 +45,34 @@
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Age</th>
+                <th>Full Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
                 <th>Email</th>
+                <th>Phone Number</th>
+                <th>Course</th>
             </tr>
         </thead>
         <tbody>
             <% studentsData.forEach(student=> { %>
                 <tr>
                     <td>
-                        <%= student.name %>
+                        <%= student.name ? student.name : '-' %>
                     </td>
                     <td>
-                        <%= student.age %>
+                        <%= student.dob ? student.dob : '-' %>
                     </td>
                     <td>
-                        <%= student.email %>
+                        <%= student.gender ? student.gender : '-' %>
+                    </td>
+                    <td>
+                        <%= student.email ? student.email : '-' %>
+                    </td>
+                    <td>
+                        <%= student.phone ? student.phone : '-' %>
+                    </td>
+                    <td>
+                        <%= student.course ? student.course : '-' %>
                     </td>
                 </tr>
                 <% }) %>
