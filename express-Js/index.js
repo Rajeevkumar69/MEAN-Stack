@@ -517,7 +517,7 @@
 // 49 Make POST Method REST API with Node.js & MongoDB
 
 import express from "express";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
 const dbName = 'school';
 const url = 'mongodb://localhost:27017/';
@@ -568,11 +568,37 @@ client.connect().then((connection) => {
 
         const collection = db.collection('students');
         const result = await collection.insertOne(userData);
-        res.send({ "message": "success", success: true  });
+        res.send({ "message": "success", success: true });
 
+    });
+
+    // ------------------------------------------------------------------
+    // #50 | Make DELETE Method REST API with Node.js & MongoDB
+
+    app.delete("/delete/:id", async (req, res) => {
+        const collection = db.collection('students');
+        const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) });
+        if (result) {
+            res.send({ "message": "success", success: true });
+        } else {
+            res.send({ "message": "failed", success: false });
+        }
+    });
+
+    // Make DELETE Features Express UI with Node.js & MongoDB
+    
+    app.get("/dashboard/delete/:id", async (req, res) => {
+        const collection = db.collection('students');
+        const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) });
+        if (result) {
+            res.send(`<h1>Student data deleted</h1>`);
+        } else {
+            res.send(`<h1>Something went wrong, Try again</h1>`);
+        }
     });
 
 })
 
 app.listen(4800);
+
 

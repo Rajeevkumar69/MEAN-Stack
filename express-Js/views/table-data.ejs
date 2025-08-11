@@ -26,6 +26,7 @@
         td {
             padding: 10px 15px;
             border-bottom: 1px solid #ccc;
+            text-align: center;
         }
 
         th {
@@ -34,6 +35,17 @@
 
         tr:hover {
             background-color: #f9f9f9;
+        }
+
+        .delete-icon {
+            color: red;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .delete-icon:hover {
+            color: darkred;
         }
     </style>
 </head>
@@ -51,6 +63,7 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Course</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -73,6 +86,9 @@
                     </td>
                     <td>
                         <%= student.course ? student.course : '-' %>
+                    </td>
+                    <td>
+                        <a href="/dashboard/delete/<%= student._id %>" class="delete-icon" title="Delete">&#128465;</a>
                     </td>
                 </tr>
                 <% }) %>
