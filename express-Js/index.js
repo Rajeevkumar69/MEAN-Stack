@@ -600,11 +600,32 @@ client.connect().then((connection) => {
     // ---------------------------------------------------
     // #Populate Form with API Data using ID | Get API with Params & MongoDB
 
-    app.get("/dashboard/edit/:id", async(req, res)=>{
+    app.get("/dashboard/edit/:id", async (req, res) => {
         const collection = db.collection('students');
         const result = await collection.findOne({ _id: new ObjectId(req.params.id) });
-       
-        res.render('add-students', {result})
+
+        res.render('add-students', { result })
+    })
+
+    // #Get particular student data from API 
+
+    app.get("/student/:id", async (req, res) => {
+        const collection = db.collection('students');
+        const result = await collection.findOne({ _id: new ObjectId(req.params.id) });
+
+        if (result) {
+            res.send({
+                "message": 'Data fetched',
+                success: true,
+                result: result
+            });
+        } else {
+            res.send({
+                "message": 'Something went wrong, Try again',
+                success: false,
+                return: false
+            });
+        }
     })
 
 
