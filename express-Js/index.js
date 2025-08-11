@@ -468,6 +468,54 @@
 // ------------------------------------------
 // 48 | REST API with Node.js & MongoDB | Save Form Data in MongoDB
 
+// import express from "express";
+// import { MongoClient } from "mongodb";
+
+// const dbName = 'school';
+// const url = 'mongodb://localhost:27017/';
+
+// const client = new MongoClient(url);
+// const app = express();
+// app.use(express.urlencoded({ extended: true }));
+// app.set('view engine', 'ejs');
+
+// client.connect().then((connection) => {
+//     connection.db(dbName);
+//     let db = client.db(dbName);
+
+//     app.get('/', async (req, res) => {
+//         const collection = db.collection('students');
+//         const result = await collection.find().toArray();
+
+//         res.send(result);
+//     });
+
+//     app.get("/dashboard", async (req, res) => {
+//         const collection = db.collection('students');
+//         const result = await collection.find().toArray();
+
+//         res.render('table-data', { studentsData: result });
+//     });
+
+//     app.get('/student-form', async (req, res) => {
+//         res.render('add-students');
+//     });
+
+//     app.post("/view", async (req, res) => {
+//         let userData = req.body;
+
+//         const collection = db.collection('students');
+//         const result =  await collection.insertOne(userData);
+//         res.render('view-details', {studentDetails:userData});
+//     });
+
+// })
+
+// app.listen(4800);
+
+// -------------------------------------------------------------------
+// 49 Make POST Method REST API with Node.js & MongoDB
+
 import express from "express";
 import { MongoClient } from "mongodb";
 
@@ -477,6 +525,7 @@ const url = 'mongodb://localhost:27017/';
 const client = new MongoClient(url);
 const app = express();
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set('view engine', 'ejs');
 
 client.connect().then((connection) => {
@@ -505,12 +554,25 @@ client.connect().then((connection) => {
         let userData = req.body;
 
         const collection = db.collection('students');
-        const result =  await collection.insertOne(userData);
-        res.render('view-details', {studentDetails:userData});
+        const result = await collection.insertOne(userData);
+        res.render('view-details', { studentDetails: userData });
+    });
+
+    app.post("/student-form-api", async (req, res) => {
+        let userData = req.body;
+        let { name, email, age } = userData;
+        if (!name || !email || !age) {
+            res.send({ message: "operation failed", success: false });
+            return false;
+        }
+
+        const collection = db.collection('students');
+        const result = await collection.insertOne(userData);
+        res.send({ "message": "success", success: true  });
+
     });
 
 })
 
 app.listen(4800);
-
 
