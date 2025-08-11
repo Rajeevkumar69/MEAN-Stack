@@ -76,41 +76,46 @@
 
     <div class="container">
         <h2>Add Student Registration</h2>
-        <form method="post" action="/view"  >
+        <form method="post" action="/view">
             <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="name" placeholder="Enter full name" required>
+            <input type="text" value="<%= result.name %>" id="fullName" name="name" placeholder="Enter full name"
+                required>
 
             <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" required>
+            <input type="date" id="dob" name="dob" value="<%= result.dob %>" required>
 
             <label for="gender">Gender</label>
             <select id="gender" name="gender" required>
                 <option value="">Select gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
+                <option value="Male" <%=result.gender==='Male' ? 'selected' : '' %>>Male</option>
+                <option value="Female" <%=result.gender==='Female' ? 'selected' : '' %>>Female</option>
+                <option value="Other" <%=result.gender==='Other' ? 'selected' : '' %>>Other</option>
             </select>
 
-            <label for="dob">Age</label>
-            <input type="number" id="dob" name="age" placeholder="Enter age"  required>
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" value="<%= result.age %>" placeholder="Enter age" required>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter email" required>
+            <input type="email" id="email" name="email" value="<%= result.email %>" placeholder="Enter email" required>
 
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+            <input type="tel" id="phone" name="phone" value="<%= result.phone %>" placeholder="Enter phone number"
+                required>
 
             <label for="course">Course</label>
             <select id="course" name="course" required>
                 <option value="">Select course</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Business Administration">Business Administration</option>
-                <option value="Engineering">Engineering</option>
+                <option value="Computer Science" <%=result.course==='Computer Science' ? 'selected' : '' %>>Computer
+                    Science</option>
+                <option value="Mathematics" <%=result.course==='Mathematics' ? 'selected' : '' %>>Mathematics</option>
+                <option value="Business Administration" <%=result.course==='Business Administration' ? 'selected' : ''
+                    %>>Business Administration</option>
+                <option value="Engineering" <%=result.course==='Engineering' ? 'selected' : '' %>>Engineering</option>
             </select>
 
             <button type="submit">Register Student</button>
         </form>
+
     </div>
 
 </body>

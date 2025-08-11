@@ -586,7 +586,7 @@ client.connect().then((connection) => {
     });
 
     // Make DELETE Features Express UI with Node.js & MongoDB
-    
+
     app.get("/dashboard/delete/:id", async (req, res) => {
         const collection = db.collection('students');
         const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) });
@@ -596,6 +596,17 @@ client.connect().then((connection) => {
             res.send(`<h1>Something went wrong, Try again</h1>`);
         }
     });
+
+    // ---------------------------------------------------
+    // #Populate Form with API Data using ID | Get API with Params & MongoDB
+
+    app.get("/dashboard/edit/:id", async(req, res)=>{
+        const collection = db.collection('students');
+        const result = await collection.findOne({ _id: new ObjectId(req.params.id) });
+       
+        res.render('add-students', {result})
+    })
+
 
 })
 

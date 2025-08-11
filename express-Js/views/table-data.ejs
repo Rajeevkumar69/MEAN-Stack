@@ -47,6 +47,17 @@
         .delete-icon:hover {
             color: darkred;
         }
+
+        .edit-icon {
+            cursor: pointer;
+            color: #007bff;
+            font-size: 18px;
+            transition: color 0.2s ease;
+        }
+
+        .edit-icon:hover {
+            color: #0056b3;
+        }
     </style>
 </head>
 
@@ -63,7 +74,8 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Course</th>
-                <th>Action</th>
+                <th>Delete</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -89,6 +101,9 @@
                     </td>
                     <td>
                         <a href="/dashboard/delete/<%= student._id %>" class="delete-icon" title="Delete">&#128465;</a>
+                    </td>
+                    <td>
+                        <a href="/dashboard/edit/<%= student._id %>" class="edit-icon" title="Edit">&#9998;</a>
                     </td>
                 </tr>
                 <% }) %>
