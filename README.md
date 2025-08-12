@@ -34,4 +34,4 @@ This repository is ideal for developers or learners who want to:
 
 ---
 
-Feel free to fork, clone, or star the repo as you dive into the MEAN journey!
+Feel free to fork, clone, or star ☀ the repo as you dive into the MEAN journey!
