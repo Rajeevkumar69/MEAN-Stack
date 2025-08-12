@@ -516,156 +516,175 @@
 // -------------------------------------------------------------------
 // 49 Make POST Method REST API with Node.js & MongoDB
 
-import express from "express";
-import { MongoClient, ObjectId } from "mongodb";
+// import express from "express";
+// import { MongoClient, ObjectId } from "mongodb";
 
-const dbName = 'school';
-const url = 'mongodb://localhost:27017/';
+// const dbName = 'school';
+// const url = 'mongodb://localhost:27017/';
 
-const client = new MongoClient(url);
-const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.set('view engine', 'ejs');
+// const client = new MongoClient(url);
+// const app = express();
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.set('view engine', 'ejs');
 
-client.connect().then((connection) => {
-    connection.db(dbName);
-    let db = client.db(dbName);
+// client.connect().then((connection) => {
+//     connection.db(dbName);
+//     let db = client.db(dbName);
 
-    app.get('/', async (req, res) => {
-        const collection = db.collection('students');
-        const result = await collection.find().toArray();
+//     app.get('/', async (req, res) => {
+//         const collection = db.collection('students');
+//         const result = await collection.find().toArray();
 
-        res.send(result);
+//         res.send(result);
+//     });
+
+//     app.get("/dashboard", async (req, res) => {
+//         const collection = db.collection('students');
+//         const result = await collection.find().toArray();
+
+//         res.render('table-data', { studentsData: result });
+//     });
+
+//     app.get('/student-form', async (req, res) => {
+//         res.render('add-students');
+//     });
+
+//     app.post("/view", async (req, res) => {
+//         let userData = req.body;
+
+//         const collection = db.collection('students');
+//         const result = await collection.insertOne(userData);
+//         res.render('view-details', { studentDetails: userData });
+//     });
+
+//     app.post("/student-form-api", async (req, res) => {
+//         let userData = req.body;
+//         let { name, email, age } = userData;
+//         if (!name || !email || !age) {
+//             res.send({ message: "operation failed", success: false });
+//             return false;
+//         }
+
+//         const collection = db.collection('students');
+//         const result = await collection.insertOne(userData);
+//         res.send({ "message": "success", success: true });
+
+//     });
+
+//     // ------------------------------------------------------------------
+//     // #50 | Make DELETE Method REST API with Node.js & MongoDB
+
+//     app.delete("/delete/:id", async (req, res) => {
+//         const collection = db.collection('students');
+//         const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) });
+//         if (result) {
+//             res.send({ "message": "success", success: true });
+//         } else {
+//             res.send({ "message": "failed", success: false });
+//         }
+//     });
+
+//     // Make DELETE Features Express UI with Node.js & MongoDB
+
+//     app.get("/dashboard/delete/:id", async (req, res) => {
+//         const collection = db.collection('students');
+//         const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) });
+//         if (result) {
+//             res.send(`<h1>Student data deleted</h1>`);
+//         } else {
+//             res.send(`<h1>Something went wrong, Try again</h1>`);
+//         }
+//     });
+
+//     // ---------------------------------------------------
+//     // #Populate Form with API Data using ID | Get API with Params & MongoDB
+
+//     app.get("/dashboard/edit/:id", async (req, res) => {
+//         const collection = db.collection('students');
+//         const result = await collection.findOne({ _id: new ObjectId(req.params.id) });
+
+//         res.render('add-students', { result })
+//     })
+
+//     // #Get particular student data from API 
+
+//     app.get("/student/:id", async (req, res) => {
+//         const collection = db.collection('students');
+//         const result = await collection.findOne({ _id: new ObjectId(req.params.id) });
+
+//         if (result) {
+//             res.send({
+//                 "message": 'Data fetched',
+//                 success: true,
+//                 result: result
+//             });
+//         } else {
+//             res.send({
+//                 "message": 'Something went wrong, Try again',
+//                 success: false,
+//                 return: false
+//             });
+//         }
+//     })
+
+//     // #52 Update Data with Form and REST API in MongoDB
+
+//     app.post("/dashboard/edit/:id", async (req, res) => {
+
+//         const collection = db.collection('students');
+//         const filter = { _id: new ObjectId(req.params.id) };
+//         const update = { $set: req.body };
+//         const result = collection.updateOne(filter, update);
+//         res.send(`Data Updated`);
+//     });
+
+//     app.put("/student/edit/:id", async (req, res) => {
+
+//         const collection = db.collection('students');
+//         const filter = { _id: new ObjectId(req.params.id) };
+//         const update = { $set: req.body };
+//         const result = collection.updateOne(filter, update);
+
+//         if (result) {
+//             res.send({
+//                 "message": 'Data updated',
+//                 success: true,
+//                 result: req.body
+//             });
+//         } else {
+//             res.send({
+//                 "message": 'Something went wrong, Try again',
+//                 success: false,
+//                 result: null
+//             });
+//         }
+//     });
+
+// })
+
+// app.listen(4800);
+
+
+// -----------------------------------------------------------
+// #53 Connect Node.js with MongoDB Using Mongoose
+// -----------------------------------------------------------
+
+import mongoose from "mongoose";
+
+async function dbConection() {
+    await mongoose.connect('mongodb://localhost:27017/school');
+    const schema = mongoose.Schema({
+        name: String,
+        age: Number,
+        email: String,
+        course: String,
+        dob: String,
+        gender: String,
+        phone: String
     });
+    const studentsModel = mongoose.model('students', schema);
+    console.log(await studentsModel.find());
+}
 
-    app.get("/dashboard", async (req, res) => {
-        const collection = db.collection('students');
-        const result = await collection.find().toArray();
-
-        res.render('table-data', { studentsData: result });
-    });
-
-    app.get('/student-form', async (req, res) => {
-        res.render('add-students');
-    });
-
-    app.post("/view", async (req, res) => {
-        let userData = req.body;
-
-        const collection = db.collection('students');
-        const result = await collection.insertOne(userData);
-        res.render('view-details', { studentDetails: userData });
-    });
-
-    app.post("/student-form-api", async (req, res) => {
-        let userData = req.body;
-        let { name, email, age } = userData;
-        if (!name || !email || !age) {
-            res.send({ message: "operation failed", success: false });
-            return false;
-        }
-
-        const collection = db.collection('students');
-        const result = await collection.insertOne(userData);
-        res.send({ "message": "success", success: true });
-
-    });
-
-    // ------------------------------------------------------------------
-    // #50 | Make DELETE Method REST API with Node.js & MongoDB
-
-    app.delete("/delete/:id", async (req, res) => {
-        const collection = db.collection('students');
-        const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) });
-        if (result) {
-            res.send({ "message": "success", success: true });
-        } else {
-            res.send({ "message": "failed", success: false });
-        }
-    });
-
-    // Make DELETE Features Express UI with Node.js & MongoDB
-
-    app.get("/dashboard/delete/:id", async (req, res) => {
-        const collection = db.collection('students');
-        const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) });
-        if (result) {
-            res.send(`<h1>Student data deleted</h1>`);
-        } else {
-            res.send(`<h1>Something went wrong, Try again</h1>`);
-        }
-    });
-
-    // ---------------------------------------------------
-    // #Populate Form with API Data using ID | Get API with Params & MongoDB
-
-    app.get("/dashboard/edit/:id", async (req, res) => {
-        const collection = db.collection('students');
-        const result = await collection.findOne({ _id: new ObjectId(req.params.id) });
-
-        res.render('add-students', { result })
-    })
-
-    // #Get particular student data from API 
-
-    app.get("/student/:id", async (req, res) => {
-        const collection = db.collection('students');
-        const result = await collection.findOne({ _id: new ObjectId(req.params.id) });
-
-        if (result) {
-            res.send({
-                "message": 'Data fetched',
-                success: true,
-                result: result
-            });
-        } else {
-            res.send({
-                "message": 'Something went wrong, Try again',
-                success: false,
-                return: false
-            });
-        }
-    })
-
-    // #52 Update Data with Form and REST API in MongoDB
-
-    app.post("/dashboard/edit/:id", async (req, res) => {
-
-        const collection = db.collection('students');
-        const filter = { _id: new ObjectId(req.params.id) };
-        const update = { $set: req.body };
-        const result = collection.updateOne(filter, update);
-        res.send(`Data Updated`);
-    });
-
-    app.put("/student/edit/:id", async (req, res) => {
-
-        const collection = db.collection('students');
-        const filter = { _id: new ObjectId(req.params.id) };
-        const update = { $set: req.body };
-        const result = collection.updateOne(filter, update);
-
-        if (result) {
-            res.send({
-                "message": 'Data updated',
-                success: true,
-                result: req.body
-            });
-        } else {
-            res.send({
-                "message": 'Something went wrong, Try again',
-                success: false,
-                result: null
-            });
-        }
-    });
-
-
-
-
-})
-
-app.listen(4800);
-
-
+dbConection();
