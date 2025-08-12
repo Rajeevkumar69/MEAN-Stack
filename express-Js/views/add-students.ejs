@@ -76,7 +76,8 @@
 
     <div class="container">
         <h2>Add Student Registration</h2>
-        <form method="post" action="/view">
+        <form method="post" action="/dashboard/edit/<%= result._id %>" >
+            <!-- action="/view" -->
             <label for="fullName">Full Name</label>
             <input type="text" value="<%= result.name %>" id="fullName" name="name" placeholder="Enter full name"
                 required>
@@ -105,6 +106,7 @@
             <label for="course">Course</label>
             <select id="course" name="course" required>
                 <option value="">Select course</option>
+                <option value="ANM" <%=result.course==='ANM' ? 'selected' : '' %>>A.N.M.</option>
                 <option value="Computer Science" <%=result.course==='Computer Science' ? 'selected' : '' %>>Computer
                     Science</option>
                 <option value="Mathematics" <%=result.course==='Mathematics' ? 'selected' : '' %>>Mathematics</option>

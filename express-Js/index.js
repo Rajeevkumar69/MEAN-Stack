@@ -628,6 +628,41 @@ client.connect().then((connection) => {
         }
     })
 
+    // #52 Update Data with Form and REST API in MongoDB
+
+    app.post("/dashboard/edit/:id", async (req, res) => {
+
+        const collection = db.collection('students');
+        const filter = { _id: new ObjectId(req.params.id) };
+        const update = { $set: req.body };
+        const result = collection.updateOne(filter, update);
+        res.send(`Data Updated`);
+    });
+
+    app.put("/student/edit/:id", async (req, res) => {
+
+        const collection = db.collection('students');
+        const filter = { _id: new ObjectId(req.params.id) };
+        const update = { $set: req.body };
+        const result = collection.updateOne(filter, update);
+
+        if (result) {
+            res.send({
+                "message": 'Data updated',
+                success: true,
+                result: req.body
+            });
+        } else {
+            res.send({
+                "message": 'Something went wrong, Try again',
+                success: false,
+                result: null
+            });
+        }
+    });
+
+
+
 
 })
 
