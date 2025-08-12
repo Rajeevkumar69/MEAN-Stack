@@ -670,21 +670,41 @@
 // #53 Connect Node.js with MongoDB Using Mongoose
 // -----------------------------------------------------------
 
+// import mongoose from "mongoose";
+
+// async function dbConection() {
+//     await mongoose.connect('mongodb://localhost:27017/school');
+//     const schema = mongoose.Schema({
+//         name: String,
+//         age: Number,
+//         email: String,
+//         course: String,
+//         dob: String,
+//         gender: String,
+//         phone: String
+//     });
+//     const studentsModel = mongoose.model('students', schema);
+//     console.log(await studentsModel.find());
+// }
+
+// dbConection();
+
+// #54 | GET REST API with Mongoose to Fetch Data from MongoDB
+
 import mongoose from "mongoose";
+import express from "express";
+import studentModel from "./models/student-model.js";
 
-async function dbConection() {
-    await mongoose.connect('mongodb://localhost:27017/school');
-    const schema = mongoose.Schema({
-        name: String,
-        age: Number,
-        email: String,
-        course: String,
-        dob: String,
-        gender: String,
-        phone: String
-    });
-    const studentsModel = mongoose.model('students', schema);
-    console.log(await studentsModel.find());
-}
+const app = express();
 
-dbConection();
+await mongoose.connect('mongodb://localhost:27017/school').then(()=>{
+    console.log('___________Connected_______________');
+    
+});
+
+app.get('/', async(req, res) => {
+    const studentModelData = await studentModel.find();
+    res.send(studentModelData);
+});
+
+app.listen(4800);
