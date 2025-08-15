@@ -712,7 +712,6 @@ app.get('/', async (req, res) => {
 
 app.post("/save", async (req, res) => {
     try {
-        console.log(await req);
         const studentModelData = await studentModel.create(req.body);
         res.send({
             message: 'Data Stored',
@@ -727,5 +726,46 @@ app.post("/save", async (req, res) => {
         });
     }
 });
+
+// #56 Make PUT & DELETE REST API with Mongoose
+
+app.put("/update/:id", async (req, res) => {
+    let userId = req.params.id;
+
+    try {
+        const studentModelData = await studentModel.findByIdAndUpdate(userId, req.body);
+        res.send({
+            message: 'Data Updated',
+            success: true,
+            data: studentModelData
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: 'Server Error',
+            success: false,
+            error: error.message
+        });
+    }
+})
+
+app.delete("/delete/:id", async (req, res) => {
+    let userId = req.params.id;
+
+    try {
+        const studentModelData = await studentModel.findByIdAndDelete(userId);
+        res.send({
+            message: 'Data Deleted',
+            success: true,
+            data: studentModelData
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: 'Server Error',
+            success: false,
+            error: error.message
+        });
+    }
+})
+
 
 app.listen(4800);
