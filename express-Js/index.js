@@ -696,15 +696,36 @@ import express from "express";
 import studentModel from "./models/student-model.js";
 
 const app = express();
+app.use(express.json());
 
-await mongoose.connect('mongodb://localhost:27017/school').then(()=>{
+await mongoose.connect('mongodb://localhost:27017/school').then(() => {
     console.log('___________Connected_______________');
-    
+
 });
 
-app.get('/', async(req, res) => {
+app.get('/', async (req, res) => {
     const studentModelData = await studentModel.find();
     res.send(studentModelData);
+});
+
+// #55 | Make Post method REST API with Mongoose to insert data
+
+app.post("/save", async (req, res) => {
+    try {
+        console.log(await req);
+        const studentModelData = await studentModel.create(req.body);
+        res.send({
+            message: 'Data Stored',
+            success: true,
+            data: studentModelData
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: 'Server Error',
+            success: false,
+            error: error.message
+        });
+    }
 });
 
 app.listen(4800);

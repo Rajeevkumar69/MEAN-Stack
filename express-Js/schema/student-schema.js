@@ -1,13 +1,13 @@
 import mongoose from "mongoose"
 
-const studentSchema = mongoose.Schema({
-    name: String,
-    age: Number,
-    email: String,
-    course: String,
-    dob: String,
-    gender: String,
-    phone: String
+const studentSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    age: { type: Number, required: true },
+    email: { type: String, required: true },
+    course: { type: String, required: true },
+    dob: { type: String, required: true },
+    gender: { type: String, required: true },
+    phone: { type: String, required: true }
 });
 
 export default studentSchema;
