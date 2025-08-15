@@ -21,11 +21,11 @@
 
 
 // app.get("/", (req, res) => {
-//     res.send(home()); 
+//     res.send(home());
 // });
 
 // app.get("/about", (req, res) => {
-//     res.send(about()); 
+//     res.send(about());
 // });
 
 // app.get("/contact", (req, res) => {
@@ -166,7 +166,7 @@
 
 // app.listen(arg[2]);
 
-// 34 External Middleware in Express.js 
+// 34 External Middleware in Express.js
 
 // import express from "express";
 // import path from 'path';
@@ -607,7 +607,7 @@
 //         res.render('add-students', { result })
 //     })
 
-//     // #Get particular student data from API 
+//     // #Get particular student data from API
 
 //     app.get("/student/:id", async (req, res) => {
 //         const collection = db.collection('students');
@@ -778,23 +778,70 @@
  & 57 Fix CORS Issues in Node.js APIs (Cross-Origin Resource Sharing)
  */
 
+// import express from "express";
+// import cors from 'cors';
+// const arg = process.argv;
+
+
+// const app = express();
+// app.use(cors());
+
+// app.get("/", (req, res) => {
+//     res.send({
+//         "name": 'Rajeev Kumar',
+//         "age": 25,
+//         "email": 'rk@test.com'
+//     });
+// })
+
+// app.listen(arg[2], () => {
+//     console.log(`Server is runing on ${arg[2]}`);
+
+// })
+
+/*
+ & 58 Upload File using Multer NPM Package
+ */
 import express from "express";
-import cors from 'cors';
+import multer from "multer";
 const arg = process.argv;
 
-
 const app = express();
-app.use(cors());
+const storage = multer.diskStorage({
+    destination: function (req, file, cb){
+        cb(null, 'file-upload');
+    },
+    filename: function (req, file, cb){
+        cb(null, file.originalname);
+    },
+})
+const upload = multer({storage});
 
 app.get("/", (req, res) => {
+    res.send(`
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <br/>
+            <br/>
+            <strong>File Upload System</strong>
+            <br/>
+            <br/>
+            <input type="file" name="upload-file" />
+            <br/>
+            <br/>
+            <button>Upload File</button>
+        </form>
+    `);
+});
+
+app.post("/upload", upload.single('upload-file'), (req, res) => {
     res.send({
-        "name": 'Rajeev Kumar',
-        "age": 25,
-        "email": 'rk@test.com'
+        message: 'File Uploaded Successfully',
+        success: true,
+        data: req.file
     });
-})
+});
 
 app.listen(arg[2], () => {
-    console.log(`Server is runing on ${arg[2]}`);
+    console.log(`Server is running on ${arg[2]}`);
 
 })
