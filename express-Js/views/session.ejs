@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Info</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1d3557, #457b9d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .session-container {
+            background: #fff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 450px;
+            text-align: left;
+        }
+
+        .session-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #1d3557;
+        }
+
+        .session-details {
+            border-top: 1px solid #ddd;
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        .session-details p {
+            font-size: 15px;
+            margin: 8px 0;
+        }
+
+        .session-details strong {
+            color: #457b9d;
+        }
+
+        .btn-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .btn-refresh {
+            background: #457b9d;
+            color: #fff;
+        }
+
+        .btn-refresh:hover {
+            background: #1d3557;
+        }
+
+        .btn-logout {
+            background: #e63946;
+            color: #fff;
+        }
+
+        .btn-logout:hover {
+            background: #b71c1c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="session-container">
+        <h2>Session Information</h2>
+        <div class="session-details">
+            <p><strong>User:</strong>
+                <%= username.userId %>
+            </p>
+            <p><strong>Session ID:</strong>
+                <%= sessionId %>
+            </p>
+        </div>
+        <div class="btn-actions">
+            <button class="btn btn-refresh">Refresh</button>
+            <button class="btn btn-logout">Logout</button>
+        </div>
+    </div>
+</body>
+
+</html>

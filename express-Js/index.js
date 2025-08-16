@@ -901,27 +901,61 @@
  & #61 Set and Get Cookies in Node js
 */
 
+// import express from "express";
+// const arg = process.argv;
+
+// const app = express();
+// app.set('view engine', 'ejs');
+// app.use(express.urlencoded({ extended: true }));
+
+// app.get("/", (req, res) => {
+//     res.render('login');
+// });
+
+// app.post("/profile", (req, res) => {
+//     res.set('Set-Cookie', [
+//         'login=true',
+//         `username=${req.body.userId}`
+//     ]);
+
+//     res.render('profile', { userName: req.body.userId });
+// });
+
+
+// app.listen(arg[2], () => {
+//     console.log(`Server running on ${arg[2]}`);
+// });
+
+/*
+ & #62 - Session 
+*/
+
 import express from "express";
+import session from "express-session";
 const arg = process.argv;
 
 const app = express();
+app.use(session({
+    secret: 'c!H@mc#@M'
+}));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
+
 
 app.get("/", (req, res) => {
     res.render('login');
 });
 
-app.post("/profile", (req, res) => {
-    res.set('Set-Cookie', [
-        'login=true',
-        `username=${req.body.userId}`
-    ]);
+app.post("/session", (req, res) => {
+    req.session.data = req.body;
+    res.render('session', {
+        username: req.session.data,
+        sessionId: req.sessionID
+    });
 
-    res.render('profile', { userName: req.body.userId });
-});
-
+})
 
 app.listen(arg[2], () => {
     console.log(`Server running on ${arg[2]}`);
+
 });
