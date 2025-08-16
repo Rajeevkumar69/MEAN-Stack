@@ -728,10 +728,9 @@
 // dbConection();
 
 /*
- & CRUD API With Mongoose
- */
-
-// #54 | GET REST API with Mongoose to Fetch Data from MongoDB
+ ^ CRUD API With Mongoose
+ & #54 | GET REST API with Mongoose to Fetch Data from MongoDB
+*/
 
 // import mongoose from "mongoose";
 // import express from "express";
@@ -901,22 +900,28 @@
 /*
  & #61 Set and Get Cookies in Node js
 */
+
 import express from "express";
-import cors from "cors";
 const arg = process.argv;
 
 const app = express();
-app.use(cors());
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-    res.send({
-        name: 'Rajeev',
-        age: 24,
-        email: 'rk@test.com'
-    });
+    res.render('login');
+});
+
+app.post("/profile", (req, res) => {
+    res.set('Set-Cookie', [
+        'login=true',
+        `username=${req.body.userId}`
+    ]);
+
+    res.render('profile', { userName: req.body.userId });
 });
 
 
 app.listen(arg[2], () => {
     console.log(`Server running on ${arg[2]}`);
-})
+});
