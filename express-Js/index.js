@@ -1,4 +1,6 @@
-// Plain express module
+/*
+ & Plain express module
+*/
 
 // import express from 'express';
 // const app = express();
@@ -10,8 +12,9 @@
 
 // app.listen(4800);
 
-
-// Render HTML code from another path
+/*
+ & Render HTML code from another path
+*/
 
 // import express from 'express';
 // import home from './pages/home.js';
@@ -36,7 +39,9 @@
 //     console.log("Server is running on http://localhost:4800");
 // });
 
-// Render HTML file from another path
+/*
+ & Render HTML file from another path
+*/
 
 // import express from 'express';
 // import path from 'path';
@@ -57,7 +62,9 @@
 //   res.sendFile(viewsPath + '/dashboard.html');
 // });
 
-// // load 404 page
+/*
+ & Load 404 Page
+*/
 
 // app.use((req, res) => {
 //   res.sendFile(viewsPath + '/error-page.html');
@@ -96,7 +103,9 @@
 
 // app.listen(arg[2]);
 
-// Route Middleware with Code Examples
+/*
+ & Route Middleware with code Examples
+*/
 
 // import express from "express";
 // const arg = process.argv;
@@ -126,7 +135,9 @@
 
 // app.listen(arg[2]);
 
-// Built-In Middleware with Code Examples
+/*
+ & Built-In Middleware with Code Examples
+*/
 
 // import express from "express";
 // import path from 'path';
@@ -166,7 +177,9 @@
 
 // app.listen(arg[2]);
 
-// 34 External Middleware in Express.js
+/*
+ & 34 External Middleware in Express.js
+*/
 
 // import express from "express";
 // import path from 'path';
@@ -188,7 +201,9 @@
 
 // app.listen(arg[2]);
 
-// 35 Error Handling Middleware in Express.js
+/*
+ & 35 Error Handling Middleware in Express.js
+*/
 
 // import express from "express";
 // import path from "path";
@@ -218,7 +233,9 @@
 
 // app.listen(arg[2]);
 
-// 36 EJS | Template engine in express JS
+/*
+ & 36 EJS | Template engine in express JS
+*/
 
 // import express from "express";
 // import  path from 'path'
@@ -238,8 +255,9 @@
 
 // app.listen(arg[2]);
 
-
-// 37 submit form data and display on ejs template engine page
+/*
+ & 37 submit form data and display on ejs template engine page
+*/
 
 // import express from "express";
 // import path from 'path';
@@ -262,7 +280,9 @@
 
 // app.listen(arg[2]);
 
-// 38 Loops and Conditions in EJS Template Files
+/*
+ & 38 Loops and Conditions in EJS Template Files
+*/
 
 // import express from "express";
 // const arg = process.argv;
@@ -290,8 +310,9 @@
 
 // app.listen(arg[2]);
 
-
-// 39 MVC Architecture Example with Node.js
+/*
+ & 39 MVC Architecture Example with Node.js
+*/
 
 // import eexpress from "express";
 // const arg = process.argv;
@@ -309,8 +330,9 @@
 
 // app.listen(arg[2]);
 
-
-// 40 Dynamic Routes with Example
+/*
+ & 40 Dynamic Routes with Example
+*/
 
 
 // import express from "express";
@@ -371,7 +393,9 @@
 
 // ------------------------------------
 // ------------------------------------
-// 45 Connect node with mongodb | mongodb npm
+/*
+ & 45 Connect node with mongodb | mongodb npm
+*/
 // ------------------------------------
 // ------------------------------------
 
@@ -397,7 +421,9 @@
 
 // const app = express();
 
-// 46 Display MongoDB Data on UI using Node.js
+/*
+ & 46 Display MongoDB Data on UI using Node.js
+*/
 
 // import express from "express";
 // import { MongoClient } from "mongodb";
@@ -417,7 +443,6 @@
 //     const collection = db.collection('students');
 
 //     const result = await collection.find().toArray();
-//     // console.log(result);
 
 //     res.render('table-data', { studentsData: result });
 // });
@@ -428,7 +453,9 @@
 
 
 // ------------------------------------------
-// 47 REST API with Node.js & MongoDB
+/*
+ & 47 REST API with Node.js & MongoDB
+*/
 
 // import express from "express";
 // import { MongoClient } from "mongodb";
@@ -466,7 +493,9 @@
 
 
 // ------------------------------------------
-// 48 | REST API with Node.js & MongoDB | Save Form Data in MongoDB
+/*
+ & 48 | REST API with Node.js & MongoDB | Save Form Data in MongoDB
+*/
 
 // import express from "express";
 // import { MongoClient } from "mongodb";
@@ -514,7 +543,9 @@
 // app.listen(4800);
 
 // -------------------------------------------------------------------
-// 49 Make POST Method REST API with Node.js & MongoDB
+/*
+ & 49 Make POST Method REST API with Node.js & MongoDB
+*/
 
 // import express from "express";
 // import { MongoClient, ObjectId } from "mongodb";
@@ -572,8 +603,9 @@
 
 //     });
 
-//     // ------------------------------------------------------------------
-//     // #50 | Make DELETE Method REST API with Node.js & MongoDB
+/*
+ & #50 | Make DELETE Method REST API with Node.js & MongoDB
+*/
 
 //     app.delete("/delete/:id", async (req, res) => {
 //         const collection = db.collection('students');
@@ -585,7 +617,9 @@
 //         }
 //     });
 
-//     // Make DELETE Features Express UI with Node.js & MongoDB
+/*
+ &  Make DELETE Features Express UI with Node.js & MongoDB
+*/
 
 //     app.get("/dashboard/delete/:id", async (req, res) => {
 //         const collection = db.collection('students');
@@ -597,8 +631,9 @@
 //         }
 //     });
 
-//     // ---------------------------------------------------
-//     // #Populate Form with API Data using ID | Get API with Params & MongoDB
+/*
+ & #Populate Form with API Data using ID | Get API with Params & MongoDB
+*/
 
 //     app.get("/dashboard/edit/:id", async (req, res) => {
 //         const collection = db.collection('students');
@@ -607,7 +642,9 @@
 //         res.render('add-students', { result })
 //     })
 
-//     // #Get particular student data from API
+/*
+ & #Get particular student data from API
+*/
 
 //     app.get("/student/:id", async (req, res) => {
 //         const collection = db.collection('students');
@@ -628,7 +665,9 @@
 //         }
 //     })
 
-//     // #52 Update Data with Form and REST API in MongoDB
+/*
+ & #52 Update Data with Form and REST API in MongoDB
+*/
 
 //     app.post("/dashboard/edit/:id", async (req, res) => {
 
@@ -665,10 +704,9 @@
 
 // app.listen(4800);
 
-
-// -----------------------------------------------------------
-// #53 Connect Node.js with MongoDB Using Mongoose
-// -----------------------------------------------------------
+/*
+ & #53 Connect Node.js with MongoDB Using Mongoose
+*/
 
 // import mongoose from "mongoose";
 
@@ -712,7 +750,9 @@
 //     res.send(studentModelData);
 // });
 
-// // #55 | Make Post method REST API with Mongoose to insert data
+/*
+ & #55 | Make Post method REST API with Mongoose to insert data
+*/
 
 // app.post("/save", async (req, res) => {
 //     try {
@@ -731,7 +771,9 @@
 //     }
 // });
 
-// // #56 Make PUT & DELETE REST API with Mongoose
+/*
+ & #56 Make PUT & DELETE REST API with Mongoose
+*/
 
 // app.put("/update/:id", async (req, res) => {
 //     let userId = req.params.id;
@@ -801,47 +843,72 @@
 
 /*
  & 58 Upload File using Multer NPM Package
- */
+*/
+
+// import express from "express";
+// import multer from "multer";
+// const arg = process.argv;
+
+// const app = express();
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb){
+//         cb(null, 'file-upload');
+//     },
+//     filename: function (req, file, cb){
+//         cb(null, file.originalname);
+//     },
+// })
+// const upload = multer({storage});
+
+// app.get("/", (req, res) => {
+//     res.send(`
+//         <form action="/upload" method="post" enctype="multipart/form-data">
+//             <br/>
+//             <br/>
+//             <strong>File Upload System</strong>
+//             <br/>
+//             <br/>
+//             <input type="file" name="upload-file" />
+//             <br/>
+//             <br/>
+//             <button>Upload File</button>
+//         </form>
+//     `);
+// });
+
+// app.post("/upload", upload.single('upload-file'), (req, res) => {
+//     res.send({
+//         message: 'File Uploaded Successfully',
+//         success: true,
+//         data: req.file
+//     });
+// });
+
+// app.listen(arg[2], () => {
+//     console.log(`Server is running on ${arg[2]}`);
+
+// })
+
+/*
+ & #59 MongoDB Atlas Introduction
+*/
+
 import express from "express";
-import multer from "multer";
+import cors from "cors";
 const arg = process.argv;
 
 const app = express();
-const storage = multer.diskStorage({
-    destination: function (req, file, cb){
-        cb(null, 'file-upload');
-    },
-    filename: function (req, file, cb){
-        cb(null, file.originalname);
-    },
-})
-const upload = multer({storage});
+app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send(`
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <br/>
-            <br/>
-            <strong>File Upload System</strong>
-            <br/>
-            <br/>
-            <input type="file" name="upload-file" />
-            <br/>
-            <br/>
-            <button>Upload File</button>
-        </form>
-    `);
-});
-
-app.post("/upload", upload.single('upload-file'), (req, res) => {
     res.send({
-        message: 'File Uploaded Successfully',
-        success: true,
-        data: req.file
+        name: 'Rajeev',
+        age: 24,
+        email: 'rk@test.com'
     });
 });
 
-app.listen(arg[2], () => {
-    console.log(`Server is running on ${arg[2]}`);
 
+app.listen(arg[2], () => {
+    console.log(`Server running on ${arg[2]}`);
 })
