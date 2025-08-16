@@ -930,32 +930,107 @@
  & #62 - Session 
 */
 
+// import express from "express";
+// import session from "express-session";
+// const arg = process.argv;
+
+// const app = express();
+// app.use(session({
+//     secret: 'c!H@mc#@M'
+// }));
+// app.set('view engine', 'ejs');
+// app.use(express.urlencoded({ extended: true }));
+
+
+// app.get("/", (req, res) => {
+//     res.render('login');
+// });
+
+// app.post("/session", (req, res) => {
+//     req.session.data = req.body;
+//     res.render('session', {
+//         username: req.session.data,
+//         sessionId: req.sessionID
+//     });
+
+// })
+
+// app.listen(arg[2], () => {
+//     console.log(`Server running on ${arg[2]}`);
+
+// });
+
+/*
+ & #63 Send Email with Node.js & Express
+*/
+
 import express from "express";
-import session from "express-session";
+import cors from "cors";
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 const arg = process.argv;
 
 const app = express();
-app.use(session({
-    secret: 'c!H@mc#@M'
-}));
+dotenv.config();
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.urlencoded({ extended: true })); // for HTML page
+// app.use(express.json()); // for API 
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'therajeevkumargupta@gmail.com',
+        pass: process.env.EMAIL_PASSWORD
+    }
+});
 
 
 app.get("/", (req, res) => {
-    res.render('login');
+    res.render('contact');
 });
 
-app.post("/session", (req, res) => {
-    req.session.data = req.body;
-    res.render('session', {
-        username: req.session.data,
-        sessionId: req.sessionID
-    });
 
-})
+app.post("/message-sent", (req, res) => {
+    res.render("email-template", {
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        subject: req.body.subject,
+        message: req.body.message
+    }, (err, html) => {
+        if (err) {
+            return res.send("Template render failed");
+        }
+
+        const mailOptions = {
+            from: req.body.email,
+            to: "therajeevkumargupta@gmail.com",
+            subject: req.body.subject,
+            html: html
+        };
+
+        const userRespond = {
+            from: "therajeevkumargupta@gmail.com",
+            to: req.body.email,
+            subject: 'Message Received',
+            text: 'Thanks for contacting us. We’ll get back to you shortly.'
+        };
+
+        transporter.sendMail(mailOptions, (err) => {
+            if (err) {
+                return res.send("Mail operation failed, Try again");
+            }
+            transporter.sendMail(userRespond, () => {
+                res.render("message-sent");
+            });
+        });
+    });
+});
+
+
 
 app.listen(arg[2], () => {
     console.log(`Server running on ${arg[2]}`);
-
 });
+
