@@ -964,75 +964,93 @@
  & #63 Send Email with Node.js & Express
 */
 
+// import express from "express";
+// import cors from "cors";
+// import nodemailer from 'nodemailer';
+// import dotenv from 'dotenv';
+// const arg = process.argv;
+
+// const app = express();
+// dotenv.config();
+// app.set('view engine', 'ejs');
+// app.use(cors());
+// app.use(express.urlencoded({ extended: true })); // for HTML page
+// // app.use(express.json()); // for API 
+
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'therajeevkumargupta@gmail.com',
+//         pass: process.env.EMAIL_PASSWORD
+//     }
+// });
+
+
+// app.get("/", (req, res) => {
+//     res.render('contact');
+// });
+
+
+// app.post("/message-sent", (req, res) => {
+//     res.render("email-template", {
+//         name: req.body.name,
+//         email: req.body.email,
+//         phone: req.body.phone,
+//         subject: req.body.subject,
+//         message: req.body.message
+//     }, (err, html) => {
+//         if (err) {
+//             return res.send("Template render failed");
+//         }
+
+//         const mailOptions = {
+//             from: ` " ${req.body.name}" 
+//             <therajeevkumargupta@gmail.com>`,
+//             to: "therajeevkumargupta@gmail.com",
+//             subject: req.body.subject,
+//             html: html,
+//             replyTo: req.body.email
+//         };
+
+//         const userRespond = {
+//             from: "therajeevkumargupta@gmail.com",
+//             to: req.body.email,
+//             subject: 'Message Received',
+//             text: 'Thanks for contacting us. We’ll get back to you shortly.'
+//         };
+
+//         transporter.sendMail(mailOptions, (err) => {
+//             if (err) {
+//                 return res.send("Mail operation failed, Try again");
+//             }
+//             transporter.sendMail(userRespond, () => {
+//                 res.render("message-sent");
+//             });
+//         });
+//     });
+// });
+
+
+
+// app.listen(arg[2], () => {
+//     console.log(`Server running on ${arg[2]}`);
+// });
+
+/*
+ & #64 How to Use TypeScript with NodeJs
+https://youtu.be/jx6nD-83rgM?si=jWJRyu4mHa9-2qf8
+*/
+
 import express from "express";
-import cors from "cors";
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
 const arg = process.argv;
 
 const app = express();
-dotenv.config();
-app.set('view engine', 'ejs');
-app.use(cors());
-app.use(express.urlencoded({ extended: true })); // for HTML page
-// app.use(express.json()); // for API 
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'therajeevkumargupta@gmail.com',
-        pass: process.env.EMAIL_PASSWORD
-    }
+app.get("", (req, res) => {
+    res.send(`Hello World!`);
 });
-
-
-app.get("/", (req, res) => {
-    res.render('contact');
-});
-
-
-app.post("/message-sent", (req, res) => {
-    res.render("email-template", {
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        subject: req.body.subject,
-        message: req.body.message
-    }, (err, html) => {
-        if (err) {
-            return res.send("Template render failed");
-        }
-
-        const mailOptions = {
-            from: ` " ${req.body.name}" 
-            <therajeevkumargupta@gmail.com>`,
-            to: "therajeevkumargupta@gmail.com",
-            subject: req.body.subject,
-            html: html,
-            replyTo: req.body.email
-        };
-
-        const userRespond = {
-            from: "therajeevkumargupta@gmail.com",
-            to: req.body.email,
-            subject: 'Message Received',
-            text: 'Thanks for contacting us. We’ll get back to you shortly.'
-        };
-
-        transporter.sendMail(mailOptions, (err) => {
-            if (err) {
-                return res.send("Mail operation failed, Try again");
-            }
-            transporter.sendMail(userRespond, () => {
-                res.render("message-sent");
-            });
-        });
-    });
-});
-
 
 
 app.listen(arg[2], () => {
     console.log(`Server running on ${arg[2]}`);
 });
-
