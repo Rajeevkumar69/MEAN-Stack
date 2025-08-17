@@ -1004,10 +1004,12 @@ app.post("/message-sent", (req, res) => {
         }
 
         const mailOptions = {
-            from: req.body.email,
+            from: ` " ${req.body.name}" 
+            <therajeevkumargupta@gmail.com>`,
             to: "therajeevkumargupta@gmail.com",
             subject: req.body.subject,
-            html: html
+            html: html,
+            replyTo: req.body.email
         };
 
         const userRespond = {
