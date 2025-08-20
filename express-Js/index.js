@@ -744,6 +744,10 @@
 
 // });
 
+/*
+& GET method REST API with Mongoose
+*/
+
 // app.get('/', async (req, res) => {
 //     const studentModelData = await studentModel.find();
 //     res.send(studentModelData);
@@ -1041,16 +1045,16 @@
 https://youtu.be/jx6nD-83rgM?si=jWJRyu4mHa9-2qf8
 */
 
-import express from "express";
-const arg = process.argv;
+// import express from "express";
+// const arg = process.argv;
 
-const app = express();
+// const app = express();
 
-app.get("", (req, res) => {
-    res.send(`Hello World!`);
-});
+// app.get("", (req, res) => {
+//     res.send(`Hello World!`);
+// });
 
 
-app.listen(arg[2], () => {
-    console.log(`Server running on ${arg[2]}`);
-});
+// app.listen(arg[2], () => {
+//     console.log(`Server running on ${arg[2]}`);
+// });
